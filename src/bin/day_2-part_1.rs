@@ -9,9 +9,9 @@ enum Shape {
 }
 
 impl Shape {
-    fn beats(self, other: Shape) -> bool {
+    fn beats(self, other: &Shape) -> bool {
         matches!(
-            (self, other),
+            (self, &other),
             (Self::Rock, Self::Scissors)
                 | (Self::Paper, Self::Rock)
                 | (Self::Scissors, Self::Paper)
@@ -74,9 +74,9 @@ impl From<Round> for Outcome {
         let p = round.player;
         let o = round.opponent;
 
-        if p.beats(o) {
+        if p.beats(&o) {
             Outcome::Win
-        } else if o.beats(p) {
+        } else if o.beats(&p) {
             Outcome::Loss
         } else {
             Outcome::Draw
