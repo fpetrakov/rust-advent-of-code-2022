@@ -101,8 +101,7 @@ fn main() {
         .map(|line| {
             let round: Round = line.parse().unwrap();
             let player_score: u32 = round.player.into();
-            let outcome: Outcome = round.into();
-            let outcome_score: u32 = outcome.into();
+            let outcome_score: u32 = Outcome::from(round).into();
             player_score + outcome_score
         })
         .sum();
