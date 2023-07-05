@@ -3,7 +3,7 @@ use rust_advent_of_code_2022::get_input_from_file;
 fn main() {
     let input = get_input_from_file("day_3-part_2.txt");
     let elves_with_items: Vec<_> = input.lines().map(|line| line.as_bytes()).collect();
-    let result = elves_with_items
+    let result: u32 = elves_with_items
         .chunks(3)
         .filter_map(|elves| {
             elves[0]
@@ -14,6 +14,6 @@ fn main() {
                     _ => (item - b'A') + 1 + 26,
                 } as u32)
         })
-        .sum::<u32>();
+        .sum();
     println!("{result}")
 }
